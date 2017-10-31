@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <!--<title>{{title}}</title>-->
+        <style>
+            .error {color: red;}
+        </style>   
+    </head>
+    <body>
+        <!-- &nbsp; -adds a space between hyperlinks-->
+        <div>
+            <h4 style="text-align:center"><a href='/login'>Login</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href='/logout'>Logout</a></h4>   
+        </div> 
+        <div>
+            <a href='/'>Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href='/blog'>Main Blog Page</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href='/newpost'>Newpost</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            <ul>
+            {% for category, message in messages%}
+                <li class="{{category}}">{{message}}</li>
+            {% endfor %}
+            </ul>        
+        {% endwith %}
+
+        {% block content %}
+        {% endblock %}
+
+    </body>
+</html>
